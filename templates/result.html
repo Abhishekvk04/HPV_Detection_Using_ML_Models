@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HPV Diagnosis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+        <!-- Favicon added below -->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        > <!-- Updated favicon path -->
+    
+
+</head>
+<body class="container mt-5">
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+        <span id="theme-label">Light Mode</span>
+    </div>
+    <div class="text-center">
+        <h1 class="mb-4">HPV Diagnosis Prediction</h1>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title" style="color:  'red' if result = 'HPV Positive (Risk Detected)' else 'green' ;">
+                    {{ result }}
+                </h2>
+                <p><b>Probability of Positive (HPV):</b> {{ probability['positive'] }}%</p>
+                <p><b>Probability of Negative (No HPV):</b> {{ probability['negative'] }}%</p>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-4" onclick="window.location.href='/'">Go Back to Form</button>
+
+
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
+        const body = document.body;
+    
+        // Check for saved user preference and apply it
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.checked = true;
+            themeLabel.textContent = 'Dark Mode';
+        }
+    
+        // Toggle dark mode on switch
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark-mode');
+                themeLabel.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeLabel.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        </script>
+</body>
+</html>

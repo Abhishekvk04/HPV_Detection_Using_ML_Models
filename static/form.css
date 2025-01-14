@@ -1,0 +1,143 @@
+/* Base Styles */
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color, #ffe6f0); /* Light pink background for light mode */
+    color: var(--text-color, #333); /* Default text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme toggle */
+}
+
+.container {
+    /*background-color: var(--container-bg-color, #fff); /* White form in light mode */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    color: var(--text-color, #333);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--field-border, #d16ba5); /* Matches light/dark themes */ 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+fieldset {
+    border: 2px solid var(--field-border, #d16ba5); /* Matches light/dark themes */
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--legend-color, #ff85a2); /* Matches light/dark themes */
+}
+
+label {
+    font-weight: bold;
+    color: var(--text-color, #ff85a2); /* Matches light/dark themes */
+}
+
+input[type="number"], input[type="radio"] {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: var(--btn-bg, #ff85a2);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: var(--text-color, #fff); /* Button text matches the theme */
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-hover-bg, #d16ba5);
+    transform: scale(1.05); /* Subtle hover effect */
+}
+/* Switch Styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #c300ff;
+}
+
+input:checked + .slider::before {
+    transform: translateX(26px);
+}
+
+/* Light and Dark Mode Styling */
+body {
+    background-color: #fac4da;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #f0f0f0;
+}
+.container.dark-mode{background-color: #222;}
+.container{background-color: white;}
+
+fieldset {
+    background-color: #ffe6f0;
+    color: rgb(61, 61, 61)
+}
+
+body.dark-mode fieldset {
+    background-color: #333;
+    color: #f0f0f0;
+    
+}

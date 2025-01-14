@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Application</title>
+
+    <!-- Favicon added below -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    > <!-- Updated favicon path -->
+
+    <title>HPV Diagnosis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>HPV Diagnosis Form</h1>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="theme-label">Light Mode</span>
+        </div>
+        
+        <form class='form' action="/predict" method="post">
+            <!-- Personal Details -->
+            <fieldset class="mb-3">
+                <legend>Personal Details</legend>
+                <label>Age (in years):</label><br>
+                <input type="number" name="age" min="0" max="120" required class="form-control"><br>
+
+                <label>Smoking:</label><br>
+                <input type="radio" name="smoking" value="1"> Yes
+                <input type="radio" name="smoking" value="0"> No<br><br>
+
+                <label>Alcohol Consumption:</label><br>
+                <input type="radio" name="alcohol_consumption" value="1"> Yes
+                <input type="radio" name="alcohol_consumption" value="0"> No<br><br>
+
+                <label>Physical Activity:</label><br>
+                <input type="radio" name="physical_activity" value="1"> Yes
+                <input type="radio" name="physical_activity" value="0"> No<br><br>
+
+                <label>Diabetes:</label><br>
+                <input type="radio" name="diabetes" value="1"> Yes
+                <input type="radio" name="diabetes" value="0"> No<br><br>
+
+                <label>Hypertension:</label><br>
+                <input type="radio" name="hypertension" value="1"> Yes
+                <input type="radio" name="hypertension" value="0"> No<br><br>
+
+                <label>Tuberculosis:</label><br>
+                <input type="radio" name="tuberculosis" value="1"> Yes
+                <input type="radio" name="tuberculosis" value="0"> No<br><br>
+            </fieldset>
+
+            <!-- Reproductive Health -->
+            <fieldset class="mb-3">
+                <legend>Reproductive Health</legend>
+                <label>Age of First Intercourse:</label><br>
+                <input type="number" name="age_of_first_intercourse" min="0" class="form-control" required><br>
+
+                <label>Number of Sexual Partners:</label><br>
+                <input type="number" name="number_of_sexual_partners" min="0" class="form-control" required><br>
+
+                <label>Menstrual Cycle Regularity:</label><br>
+                <input type="radio" name="menstrual_cycle" value="1"> Regular
+                <input type="radio" name="menstrual_cycle" value="0"> Irregular<br><br>
+
+                <label>Number of Sanitary Pads Used a Day:</label><br>
+                <input type="number" name="number_of_sanitary_pads_used_a_day" min="0" class="form-control" required><br>
+
+                <label>Attained Menopause:</label><br>
+                <input type="radio" name="attained_menopause" value="1"> Yes
+                <input type="radio" name="attained_menopause" value="0"> No<br><br>
+
+                <label>Age of First Pregnancy:</label><br>
+                <input type="number" name="age_of_first_pregnancy" min="0" class="form-control" required><br>
+
+                <label>Number of Conceptions:</label><br>
+                <input type="number" name="number_of_conceptions" min="0" class="form-control" required><br>
+
+                <label>Family Planning:</label><br>
+                <input type="radio" name="family_planning" value="1"> Yes
+                <input type="radio" name="family_planning" value="0"> No<br><br>
+
+                <label>Post Menopausal Bleeding:</label><br>
+                <input type="radio" name="post_menopausal_bleeding" value="1"> Yes
+                <input type="radio" name="post_menopausal_bleeding" value="0"> No<br><br>
+            </fieldset>
+
+            <!-- Symptoms -->
+            <fieldset class="mb-3">
+                <legend>Symptoms</legend>
+                <label>Vaginal Discharge Complaints:</label><br>
+                <input type="radio" name="vaginal_discharge_complaints" value="1"> Yes
+                <input type="radio" name="vaginal_discharge_complaints" value="0"> No<br><br>
+
+                <label>Blood-Stained Vaginal Discharge:</label><br>
+                <input type="radio" name="blood_stained_vaginal_discharge" value="1"> Yes
+                <input type="radio" name="blood_stained_vaginal_discharge" value="0"> No<br><br>
+
+                <label>White Curdy Vaginal Discharge:</label><br>
+                <input type="radio" name="white_curdy_vaginal_discharge" value="1"> Yes
+                <input type="radio" name="white_curdy_vaginal_discharge" value="0"> No<br><br>
+
+                <label>Complains of Menorrhagia:</label><br>
+                <input type="radio" name="complains_of_menorrahagia" value="1"> Yes
+                <input type="radio" name="complains_of_menorrahagia" value="0"> No<br><br>
+
+                <label>Complains of Metrorrhagia:</label><br>
+                <input type="radio" name="complains_of_metrorahagia" value="1"> Yes
+                <input type="radio" name="complains_of_metrorahagia" value="0"> No<br><br>
+
+                <label>Complains of Chronic Pelvic Pain:</label><br>
+                <input type="radio" name="complains_of_chronic_pelvic_pain" value="1"> Yes
+                <input type="radio" name="complains_of_chronic_pelvic_pain" value="0"> No<br><br>
+
+                <label>Genital Ulcer:</label><br>
+                <input type="radio" name="genital_ulcer" value="1"> Yes
+                <input type="radio" name="genital_ulcer" value="0"> No<br><br>
+
+                <label>Complains of Itching:</label><br>
+                <input type="radio" name="complains_of_itching" value="1"> Yes
+                <input type="radio" name="complains_of_itching" value="0"> No<br><br>
+
+                <label>Complains of Dyspareunia (Pain During Intercourse):</label><br>
+                <input type="radio" name="complains_of_dyspareunia" value="1"> Yes
+                <input type="radio" name="complains_of_dyspareunia" value="0"> No<br><br>
+
+                <label>Complains of Post Coital Bleeding:</label><br>
+                <input type="radio" name="complains_of_post_coital_bleeding" value="1"> Yes
+                <input type="radio" name="complains_of_post_coital_bleeding" value="0"> No<br><br>
+
+                <label>Loss of Weight Without Dieting:</label><br>
+                <input type="radio" name="loss_of_weight_without_dieting" value="1"> Yes
+                <input type="radio" name="loss_of_weight_without_dieting" value="0"> No<br><br>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeLabel = document.getElementById('theme-label');
+    const body = document.body;
+
+    // Check for saved user preference and apply it
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.checked = true;
+        themeLabel.textContent = 'Dark Mode';
+    }
+
+    // Toggle dark mode on switch
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            body.classList.add('dark-mode');
+            themeLabel.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+            themeLabel.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+    </script>
+</body>
+</html>
